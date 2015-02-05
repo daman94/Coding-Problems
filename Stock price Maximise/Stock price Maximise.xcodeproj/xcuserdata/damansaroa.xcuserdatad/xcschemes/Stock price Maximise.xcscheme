@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "41AE742F1A4587CD000B0E6A"
-               BuildableName = "Postfix expression"
-               BlueprintName = "Postfix expression"
-               ReferencedContainer = "container:Postfix expression.xcodeproj">
+               BlueprintIdentifier = "4131A4B81A616106008239ED"
+               BuildableName = "Stock price Maximise"
+               BlueprintName = "Stock price Maximise"
+               ReferencedContainer = "container:Stock price Maximise.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "41AE742F1A4587CD000B0E6A"
-            BuildableName = "Postfix expression"
-            BlueprintName = "Postfix expression"
-            ReferencedContainer = "container:Postfix expression.xcodeproj">
+            BlueprintIdentifier = "4131A4B81A616106008239ED"
+            BuildableName = "Stock price Maximise"
+            BlueprintName = "Stock price Maximise"
+            ReferencedContainer = "container:Stock price Maximise.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -51,10 +51,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "41AE742F1A4587CD000B0E6A"
-            BuildableName = "Postfix expression"
-            BlueprintName = "Postfix expression"
-            ReferencedContainer = "container:Postfix expression.xcodeproj">
+            BlueprintIdentifier = "4131A4B81A616106008239ED"
+            BuildableName = "Stock price Maximise"
+            BlueprintName = "Stock price Maximise"
+            ReferencedContainer = "container:Stock price Maximise.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -69,10 +69,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "41AE742F1A4587CD000B0E6A"
-            BuildableName = "Postfix expression"
-            BlueprintName = "Postfix expression"
-            ReferencedContainer = "container:Postfix expression.xcodeproj">
+            BlueprintIdentifier = "4131A4B81A616106008239ED"
+            BuildableName = "Stock price Maximise"
+            BlueprintName = "Stock price Maximise"
+            ReferencedContainer = "container:Stock price Maximise.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

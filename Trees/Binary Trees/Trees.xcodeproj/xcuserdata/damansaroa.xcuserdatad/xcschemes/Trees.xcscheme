@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "41AE742F1A4587CD000B0E6A"
-               BuildableName = "Postfix expression"
-               BlueprintName = "Postfix expression"
-               ReferencedContainer = "container:Postfix expression.xcodeproj">
+               BlueprintIdentifier = "41A540511A4CAB7E002DFE72"
+               BuildableName = "Trees"
+               BlueprintName = "Trees"
+               ReferencedContainer = "container:Trees.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "41AE742F1A4587CD000B0E6A"
-            BuildableName = "Postfix expression"
-            BlueprintName = "Postfix expression"
-            ReferencedContainer = "container:Postfix expression.xcodeproj">
+            BlueprintIdentifier = "41A540511A4CAB7E002DFE72"
+            BuildableName = "Trees"
+            BlueprintName = "Trees"
+            ReferencedContainer = "container:Trees.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -51,10 +51,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "41AE742F1A4587CD000B0E6A"
-            BuildableName = "Postfix expression"
-            BlueprintName = "Postfix expression"
-            ReferencedContainer = "container:Postfix expression.xcodeproj">
+            BlueprintIdentifier = "41A540511A4CAB7E002DFE72"
+            BuildableName = "Trees"
+            BlueprintName = "Trees"
+            ReferencedContainer = "container:Trees.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -69,10 +69,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "41AE742F1A4587CD000B0E6A"
-            BuildableName = "Postfix expression"
-            BlueprintName = "Postfix expression"
-            ReferencedContainer = "container:Postfix expression.xcodeproj">
+            BlueprintIdentifier = "41A540511A4CAB7E002DFE72"
+            BuildableName = "Trees"
+            BlueprintName = "Trees"
+            ReferencedContainer = "container:Trees.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

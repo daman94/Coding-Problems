@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "41AE742F1A4587CD000B0E6A"
-               BuildableName = "Postfix expression"
-               BlueprintName = "Postfix expression"
-               ReferencedContainer = "container:Postfix expression.xcodeproj">
+               BlueprintIdentifier = "416775731A4F569D00D244BD"
+               BuildableName = "Create Binary Tree from Inorder and Preorder"
+               BlueprintName = "Create Binary Tree from Inorder and Preorder"
+               ReferencedContainer = "container:Create Binary Tree from Inorder and Preorder.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "41AE742F1A4587CD000B0E6A"
-            BuildableName = "Postfix expression"
-            BlueprintName = "Postfix expression"
-            ReferencedContainer = "container:Postfix expression.xcodeproj">
+            BlueprintIdentifier = "416775731A4F569D00D244BD"
+            BuildableName = "Create Binary Tree from Inorder and Preorder"
+            BlueprintName = "Create Binary Tree from Inorder and Preorder"
+            ReferencedContainer = "container:Create Binary Tree from Inorder and Preorder.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -51,10 +51,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "41AE742F1A4587CD000B0E6A"
-            BuildableName = "Postfix expression"
-            BlueprintName = "Postfix expression"
-            ReferencedContainer = "container:Postfix expression.xcodeproj">
+            BlueprintIdentifier = "416775731A4F569D00D244BD"
+            BuildableName = "Create Binary Tree from Inorder and Preorder"
+            BlueprintName = "Create Binary Tree from Inorder and Preorder"
+            ReferencedContainer = "container:Create Binary Tree from Inorder and Preorder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -69,10 +69,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "41AE742F1A4587CD000B0E6A"
-            BuildableName = "Postfix expression"
-            BlueprintName = "Postfix expression"
-            ReferencedContainer = "container:Postfix expression.xcodeproj">
+            BlueprintIdentifier = "416775731A4F569D00D244BD"
+            BuildableName = "Create Binary Tree from Inorder and Preorder"
+            BlueprintName = "Create Binary Tree from Inorder and Preorder"
+            ReferencedContainer = "container:Create Binary Tree from Inorder and Preorder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
