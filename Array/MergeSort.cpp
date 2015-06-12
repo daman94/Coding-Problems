@@ -40,7 +40,7 @@ void merge(int a[], int l,int m, int r)
             k++;
             i++;
         }
-
+        
     }
     
     while (j<n1)
@@ -93,7 +93,7 @@ int main() {
     {
         printf(" %d ",  a[i]);
     }
-
+    
     
     
     return 0;
