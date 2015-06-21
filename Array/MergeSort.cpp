@@ -9,74 +9,72 @@
 
 #include <iostream>
 
-void merge(int a[], int l,int m, int r)
+void merge(int *arr, int l,int m, int r)
 {
     int n1 = m-l+1;
     int n2 = r-m;
     
-    int left[n1];
-    int right[n2];
+    int left[n1], right[n2];
     
-    for (int i=0; i<n1; i++) {
-        left[i] = a[l+i];
-    }
-    
-    for (int i=0; i<n2; i++) {
-        right[i] = a[m+1+i];
-    }
-    
-    int j=0, k=0, i=l;
-    
-    while ( j < n1 && k < n2)
+    for (int i=0; i<n1; i++)
     {
-        if (left[j] <= right[k])
+        left[i] = arr[l+i];
+    }
+    
+    for (int i=0; i<n2; i++)
+    {
+        right[i] = arr[m+1+i];
+    }
+    
+    int i=0, j=0, k=l;
+    
+    while (i<n1 && j<n2)
+    {
+        if (left[i] <= right[j])
         {
-            a[i] = left[j];
-            j++;
-            i++;
-        }
-        else {
-            a[i] = right[k];
+            arr[k] = left[i];
             k++;
             i++;
         }
-        
+        else
+        {
+            arr[k] = right[j];
+            j++;
+            k++;
+        }
     }
     
-    while (j<n1)
+    while (i<n1)
     {
-        a[i] = left[j];
-        i++;
-        j++;
-    }
-    
-    while (k<n2)
-    {
-        a[i] = right[k];
+        arr[k] = left[i];
         i++;
         k++;
     }
     
-    
-    
-    
+    while (j<n2)
+    {
+        arr[k] = right[j];
+        j++;
+        k++;
+    }
 }
 
-void mergeSort( int a[], int l, int r)
+
+void mergeSort(int *arr, int left, int right)
 {
-    if (l<r)
+    if (left < right)
     {
-        int mid = (l+r)/2;
-        mergeSort(a, l, mid);
-        mergeSort(a, mid+1, r);
-        merge(a, l, mid, r);
+        int mid = (left+right)/2;
+        mergeSort(arr,left,mid);
+        mergeSort(arr, mid+1, right);
+        merge(arr,left,mid,right);
     }
 }
 
 
 int main() {
     
-    int a[] = {5,2,4,1,3};
+    int a[] = {5,2,4,1,3,1,6};
     int n = sizeof(a)/sizeof(int) ;
     
     
