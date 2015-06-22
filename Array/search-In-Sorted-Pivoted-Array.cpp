@@ -7,7 +7,7 @@
 //
 
 #include <iostream>
-#define MAX 1000001
+#define MAX 100000
 using namespace std;
 
 int binarySearch(int *arr, int left, int right, int size , int key);
