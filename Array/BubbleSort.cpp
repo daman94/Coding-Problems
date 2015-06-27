@@ -32,13 +32,16 @@ int main() {
     
     int arr[] = {5,4,3,2,1};
     
+    
     int n = sizeof(arr) / sizeof(int);
     
     bubbleSort(arr, n);
     
-    for (int i=0; i<n; i++) {
+    for (int i=0; i<n; i++)
+    {
         printf(" %d ", arr[i]);
     }
     
+    //Bubble SOrt
     return 0;
 }
