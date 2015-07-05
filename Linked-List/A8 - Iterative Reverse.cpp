@@ -82,69 +82,6 @@ void push(struct node** headRef, int data)
     
 }
 
-void insertAtIndex(struct node** headRef, int data, int index)
-{
-    if (index == 0)
-    {
-        push(headRef, data);
-    }
-    else{
-        struct node* current = *headRef;
-        
-        while (index!=1)
-        {
-            if (current->next != NULL)
-            {
-                current = current->next;
-                index--;
-            }
-            else
-            {
-                cout << "Index out of domain";
-                break;
-            }
-        }
-        struct node* newNode = new node;
-        newNode->data = data;
-        newNode->next = current->next;
-        current->next = newNode;
-    }
-}
-
-void deleteNode(struct node** headRef, int key)
-{
-    if (*headRef == NULL)
-    {
-        cout<<"Empty list";
-    }
-    
-    struct node* current = *headRef;
-    if (current->data == key)
-    {
-        *headRef = current->next;
-        free(current);
-    }
-    
-    else
-    {
-        struct node* prev = NULL;
-        
-        while (current->data != key)
-        {
-            prev = current;
-            if (current->next == NULL)
-            {
-                cout << "key not available";
-                break;
-            }
-            current = current->next;
-        }
-        
-        prev->next = current->next;
-        free(current);
-    }
-}
-
 void reverse(struct node** headRef)
 {
     struct node* prev = *headRef;

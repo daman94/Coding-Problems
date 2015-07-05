@@ -14,38 +14,38 @@ void swap(int *a, int *b) {
     *b = temp;
 }
 
-void bubbleSort(int arr[], int n)
+
+void InsertionSort(int *arr, int n)
 {
-    int pass, swapped = 1;
-    int i;
-    for (pass=n-1; pass>=0 && swapped ; pass--)
+    int i,j,key;
+    for (i=1 ; i<n; i++)
     {
-        swapped = 0;
-        for (i=0; i<pass ; i++)
+        key = arr[i];
+        j = i-1;
+        while (j>=0 && arr[j] > key)
         {
-            if (arr[i] > arr[i+1])
-            {
-                swapped = 1;
-                swap(&arr[i], &arr[i+1]);
-            }
+            arr[j+1] = arr[j];
+            j--;
         }
+        
+        arr[j+1] = key;
     }
 }
 
 int main() {
     
-    int arr[] = {5,4,3,2,1};
+    int arr[] = {2,3,1,5,4};
     
     
     int n = sizeof(arr) / sizeof(int);
     
-    bubbleSort(arr, n);
+    InsertionSort(arr, n);
+    
     
     for (int i=0; i<n; i++)
     {
         printf(" %d ", arr[i]);
     }
     
-    //Bubble SOrt
     return 0;
 }
