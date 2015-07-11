@@ -17,12 +17,11 @@ void swap(char *a, char *b)
     *b = temp;
 }
 
-void swapStrings(char **a, char **b)
+void SwapStrings(char **aRef, char **bRef)
 {
-    char *temp =*a;
-    *a=*b;
-    *b=temp;
-    
+    char *temp = *aRef;
+    *aRef = *bRef;
+    *bRef = temp;
 }
 
 int main()
@@ -30,9 +29,7 @@ int main()
     char *a = "Saroa";
     char *b = "Daman";
     
-    
-    
-    swapStrings(&a, &b);
+    SwapStrings(&a, &b);
     
     cout << a << endl;
     
