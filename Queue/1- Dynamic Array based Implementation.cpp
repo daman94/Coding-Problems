@@ -49,11 +49,32 @@ int isFullQueue(struct Queue* q)
     return ((q->rear+1)%q->capacity == q->front);
 }
 
+int QueueSize(struct Queue* Q)
+{
+    return ((Q->capacity - Q->front + Q->rear + 1)% Q->capacity ) ;
+}
+
+void ResizeQueue(struct Queue* q)
+{
+    int size = q->capacity;
+    q->capacity = q->capacity * 2;
+    
+    q->array = (int *)realloc(q->array, q->capacity);
+    
+    if (q->front > q->rear)
+    {
+        for (int i=q->rear; i < q->front; i++)
+        {
+            q->array[i+size] = q->array[i];
+        }
+    }
+    q->rear = q->rear+size;
+}
+
 void EnQueue(struct Queue* q, int data)
 {
     if (isFullQueue(q)) {
-        cout << "Queue Overflow";
-        return;
+        ResizeQueue(q);
     }
     q->rear = (q->rear+1) % q->capacity;
     q->array[q->rear] = data;
@@ -69,27 +90,103 @@ int DeQueue(struct Queue* q)
     if (isEmptyQueue(q))
     {
         cout << "Queue Underflow";
-        return INT_MIN;
+        return 0;
     }
     
-    int data = q->array[q->rear];
+    int data = q->array[q->front];
     
-    q->rear = (q->rear-1)%q->capacity;
-    
+    if (q->front == q->rear)
+    {
+        q->front = q->rear = -1;
+    }
+    else
+    {
+        q->front = (q->front+1)%q->capacity;
+    }
     
     return data;
 }
 
+void PrintQueue(struct Queue *q)
+{
+    if (isEmptyQueue(q))
+    {
+        cout << "Queue is empty";
+        return;
+    }
+    
+    int i = q->front;
+    
+    while (i != q->rear)
+    {
+        cout << q->array[i] << " ";
+        
+        i = (i+1)%q->capacity;
+    }
+    cout << q->array[i] << endl;
+}
 
-
-
-
-
-
+void DeleteQueue(struct Queue *q)
+{
+    if (q)
+    {
+        if (q->array)
+        {
+            free(q->array);
+        }
+        free(q);
+    }
+}
 
 
 int main()
 {
+    struct Queue *Q = createQueue(3);
     
+    EnQueue(Q, 1);
+    EnQueue(Q, 2);
+    EnQueue(Q, 3);
+    
+    EnQueue(Q, 4);
+    DeQueue(Q);
+    
+    PrintQueue(Q);
+    
+    
+    DeleteQueue(Q);
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
