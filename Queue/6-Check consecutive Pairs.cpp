@@ -12,7 +12,7 @@
 #include <queue>
 using namespace std;
 
-bool consecutivePairs(stack<int> s)
+bool consecutivePairs(stack<int> &s)
 {
     queue<int> q;
     int x, m, n;
@@ -76,51 +76,11 @@ int main()
     s.push(20);
     
     if (consecutivePairs(s) )
-        cout << "COnsecutive";
+        cout << "Consecutive"<<endl;
     
+    while (!s.empty()) {
+        cout << s.top() << " ";
+        s.pop();
+    }
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
