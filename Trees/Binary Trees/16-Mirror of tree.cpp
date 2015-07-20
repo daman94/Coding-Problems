@@ -1,75 +1,121 @@
-#include<stdio.h>
-#include<stdlib.h>
+//
+//  main.cpp
+//  Array
+//
+//  Created by Daman Saroa on 09/06/15.
+//  Copyright (c) 2015 Daman Saroa. All rights reserved.
+//
 
-struct node
-{
+#include <iostream>
+#include <stack>
+using namespace std;
+
+struct BTNode {
     int data;
-    struct node* left;
-    struct node* right;
+    struct BTNode* left;
+    struct BTNode* right;
 };
 
-struct node* newNode(int data)
-
+struct BTNode* newNode(int data)
 {
-    struct node* node = (struct node*)
-    malloc(sizeof(struct node));
-    node->data = data;
-    node->left = NULL;
-    node->right = NULL;
+    struct BTNode* newnode = new struct BTNode;
     
-    return(node);
+    newnode->data = data;
+    newnode->left = NULL;
+    newnode->right = NULL;
+    
+    return newnode;
 }
 
-void mirror(struct node* node)
+void DeleteTree(struct BTNode* root)
 {
-    if (node==NULL)
-        return;
-    else
+    if (root)
     {
-        struct node* temp;
-        
-        /* do the subtrees */
-        mirror(node->left);
-        mirror(node->right);
-        
-        /* swap the pointers in this node */
-        temp        = node->left;
-        node->left  = node->right;
-        node->right = temp;
+        DeleteTree(root->left);
+        DeleteTree(root->right);
+        free(root);
     }
-}
-
-
-void inOrder(struct node* node)
-{
-    if (node == NULL)
+    else
         return;
-    
-    inOrder(node->left);
-    printf("%d ", node->data);
-    
-    inOrder(node->right);
 }
+
+void inOrder(struct BTNode* root)
+{
+    if (!root) {
+        return;
+    }
+    
+    inOrder(root->left);
+    cout << root->data;
+    inOrder(root->right);
+}
+
+void Mirror(struct BTNode* root)
+{
+    if (!root) return;
+    
+    if (root->left && root->right)
+    {
+        struct BTNode* temp = root->left;
+        root->left = root->right;
+        root->right = temp;
+    }
+    
+    else if (root->left)
+    {
+        root->right = root->left;
+        root->left = NULL;
+    }
+    
+    else if (root->right)
+    {
+        root->left = root->right;
+        root->right = NULL;
+    }
+    
+    Mirror(root->left);
+    Mirror(root->right);
+    return;
+}
+
+
 
 int main()
 {
-    struct node *root = newNode(1);
+    struct BTNode *root = newNode(1);
     root->left        = newNode(2);
     root->right       = newNode(3);
     root->left->left  = newNode(4);
     root->left->right = newNode(5);
     
-    /* Print inorder traversal of the input tree */
+    
     printf("\n Inorder traversal of the constructed tree is \n");
     inOrder(root);
+    cout << endl;
     
-    /* Convert tree to its mirror */
-    mirror(root);
     
-    /* Print inorder traversal of the mirror tree */
+    Mirror(root);
+    
+    
     printf("\n Inorder traversal of the mirror tree is \n");
     inOrder(root);
     
-    getchar();
+    DeleteTree(root);
+    
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
