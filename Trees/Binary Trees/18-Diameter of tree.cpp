@@ -1,97 +1,106 @@
-#include <stdio.h>
-#include <stdlib.h>
+//
+//  main.cpp
+//  Array
+//
+//  Created by Daman Saroa on 09/06/15.
+//  Copyright (c) 2015 Daman Saroa. All rights reserved.
+//
 
-/* A binary tree node has data, pointer to left child
- and a pointer to right child */
-struct node
-{
+#include <iostream>
+#include <stack>
+using namespace std;
+
+struct BTNode {
     int data;
-    struct node* left;
-    struct node* right;
+    struct BTNode* left;
+    struct BTNode* right;
 };
 
-/* function to create a new node of tree and returns pointer */
-struct node* newNode(int data);
-
-/* returns max of two integers */
-int max(int a, int b);
-
-/* function to Compute height of a tree. */
-int height(struct node* node);
-
-/* Function to get diameter of a binary tree */
-int diameter(struct node * tree)
+struct BTNode* newNode(int data)
 {
-    /* base case where tree is empty */
-    if (tree == 0)
+    struct BTNode* newnode = new struct BTNode;
+    
+    newnode->data = data;
+    newnode->left = NULL;
+    newnode->right = NULL;
+    
+    return newnode;
+}
+
+void DeleteTree(struct BTNode* root)
+{
+    if (root)
+    {
+        DeleteTree(root->left);
+        DeleteTree(root->right);
+        free(root);
+    }
+    else
+        return;
+}
+
+int FindHeight(struct BTNode* root)
+{
+    if (!root)
         return 0;
     
-    /* get the height of left and right sub-trees */
-    int lheight = height(tree->left);
-    int rheight = height(tree->right);
+    int l,r;
+    l = FindHeight(root->left);
+    r = FindHeight(root->right);
     
-    /* get the diameter of left and right sub-trees */
-    int ldiameter = diameter(tree->left);
-    int rdiameter = diameter(tree->right);
-    
-    /* Return max of following three
-     1) Diameter of left subtree
-     2) Diameter of right subtree
-     3) Height of left subtree + height of right subtree + 1 */
-    return max(lheight + rheight + 1, max(ldiameter, rdiameter));
+    return (max(l,r) + 1);
 }
 
-/* UTILITY FUNCTIONS TO TEST diameter() FUNCTION */
-
-/*  The function Compute the "height" of a tree. Height is the
- number f nodes along the longest path from the root node
- down to the farthest leaf node.*/
-int height(struct node* node)
+int FindDiameter(struct BTNode* root, int* height)
 {
-    /* base case tree is empty */
-    if(node == NULL)
+    int lh=0, rh=0, ld=0, rd=0;
+    
+    if (!root)
+    {
+        *height = 0;
         return 0;
+    }
     
-    /* If tree is not empty then height = 1 + max of left
-     height and right heights */
-    return 1 + max(height(node->left), height(node->right));
-}
-struct node* newNode(int data)
-{
-    struct node* node = (struct node*)
-    malloc(sizeof(struct node));
-    node->data = data;
-    node->left = NULL;
-    node->right = NULL;
+    ld = FindDiameter(root->left, &lh);
+    rd = FindDiameter(root->right, &rh);
     
-    return(node);
+    *height = max(lh,rh) + 1;
+    
+    return max( lh+rh+1, max(ld, rd) );
 }
 
-/* returns maximum of two integers */
-int max(int a, int b)
-{
-    return (a >= b)? a: b;
-}
-
-/* Driver program to test above functions*/
 int main()
 {
-    
-    /* Constructed binary tree is
-     1
-     /   \
-     2      3
-     /  \
-     4     5
-     */
-    struct node *root = newNode(1);
-    root->left        = newNode(2);
-    root->right       = newNode(3);
-    root->left->left  = newNode(4);
+    struct BTNode* root = newNode(1);
+    root->left = newNode(2);
+    root->right = newNode(3);
+    root->left->left = newNode(4);
     root->left->right = newNode(5);
+    root->right->left = newNode(6);
+    root->right->right = newNode(7);
+    root->right->right->left = newNode(9);
     
-    printf("Diameter of the given binary tree is %d\n", diameter(root));
+    int height=0;
     
-    getchar();
+    cout << FindDiameter(root, &height);
+    
+    
+    DeleteTree(root);
+    
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
