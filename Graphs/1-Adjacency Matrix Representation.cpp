@@ -7,87 +7,56 @@
 //
 
 #include <iostream>
-#include <stdio.h>
 using namespace std;
 
-struct Graph
+class Graph
 {
     int V;
-    int E;
-    int** Adj;
-};
-
-struct Graph* adjMatrixOfGraph()
-{
-    int i,u,v;
+    int** adjMat;
     
-    struct Graph* G = new struct Graph;
-    
-    if (!G)
+public:
+    Graph(int n)
     {
-        cout << "Memory error";
-        return NULL;
-    }
-    
-    cout << "No. of vertices";
-    cin >> G->V;
-    cout << "No. of edges";
-    cin >> G->E;
-    
-    G->Adj = (int**)malloc(sizeof(G->V * G->V));
-    
-    for (u=0; u < G->V; u++)
-    {
-        for (v=0; v < G->V; v++)
+        this->V = n;
+        
+        adjMat = new int* [n];
+        
+        for (int i=0; i<n; i++)
         {
-            G->Adj[u][v] = 0;
+            adjMat[i] = new int[n];
         }
         
-        for (i=0; i<G->E; i++)
+        for (int i=0; i<n; i++)
         {
-            cout << "reading edge: ";
-            cin >> u >> v;
-            G->Adj[u][v] = 1;
-            G->Adj[v][u] = 1;
+            for (int j=0; j<n; j++) {
+                adjMat[i][j] = 0;
+            }
         }
     }
     
-    return G;
+    void addEdge(int u, int v)
+    {
+        adjMat[u][v] = 1;
+    }
     
-}
-
+    void deleteEdge(int u, int v)
+    {
+        adjMat[u][v] = 0;
+    }
+    
+};
 
 int main()
 {
-    struct Graph* G;
+    Graph g(4);
     
-    G = adjMatrixOfGraph();
+    
+    g.addEdge(0, 1);
+    g.addEdge(0, 3);
+    
     
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
