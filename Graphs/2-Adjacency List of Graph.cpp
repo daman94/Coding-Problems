@@ -60,7 +60,7 @@ void addEdge(struct Graph* G, int src, int dest)
     
     G->array[src].head = newnode;
     
-    //Undirected graph
+    //For Undirected graph
     
     newnode = newNode(src);
     newnode->next = G->array[dest].head;
