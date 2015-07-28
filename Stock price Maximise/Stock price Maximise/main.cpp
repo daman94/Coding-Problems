@@ -19,7 +19,6 @@ void func(int arr[], int n)
         {
             max = arr[i+1];
         }
-        
         else
         {
             profit = profit + (max - min);
