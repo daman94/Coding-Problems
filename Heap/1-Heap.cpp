@@ -170,18 +170,26 @@ void printHeap(struct heap* h)
     }
 }
 
-
+void BuildHeap(struct heap* h, int* arr, int n)
+{
+    for (int i=0; i<n; i++)
+    {
+        h->array[i] = arr[i];
+    }
+    
+    h->count = n;
+    Heapify(h, 0);
+}
 
 //**************************  Main  ************************//
 int main()
 {
-    struct heap* h;
+    struct heap* h = createHeap(2);
     
-    h = createHeap(5);
+    int arr[] = {2,4,1,5,3};
+    int n = sizeof(arr)/sizeof(arr[0]);
     
-    insert(h, 3);
-    insert(h, 5);
-    insert(h, 1);
+    BuildHeap(h,arr,n);
     
     printHeap(h);
     
