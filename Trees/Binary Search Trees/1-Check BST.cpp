@@ -28,18 +28,60 @@ struct node* newNode(int data)
     return root;
 }
 
+int FindMax(struct node* root)
+{
+    if (!root)
+        return -1;
+    
+    int max = root->data;
+    
+    int l = FindMax(root->left);
+    int r = FindMax(root->right);
+    
+    if (l>max)
+        max = l;
+    if (r>max)
+        max = r;
+    
+    return max;
+    
+}
+
+int FindMin(struct node* root)
+{
+    if (!root)
+        return -1;
+    
+    int min = root->data;
+    
+    int l = FindMin(root->left);
+    int r = FindMin(root->right);
+    
+    if (l<min)
+        min = l;
+    if (r<min)
+        min = r;
+    
+    return min;
+    
+}
+
+
 bool checkBST(struct node* root)
 {
     if (!root)
         return true;
     
-    if (root->left && root->left->data > root->data)
+    if (root->left && FindMax(root->left) > root->data)
         return false;
     
-    if (root->right && root->right->data < root->data)
+    if (root->right && FindMin(root->right) < root->data)
         return false;
     
-    return (checkBST(root->left) && checkBST(root->right));
+    if (!checkBST(root->left) || !checkBST(root->right))
+        return false;
+    
+    return true;
 }
 
 
@@ -47,11 +89,11 @@ bool checkBST(struct node* root)
 
 int main()
 {
-    struct node *root = newNode(4);
+    struct node *root = newNode(6);
     root->left        = newNode(2);
-    root->right       = newNode(5);
+    root->right       = newNode(8);
     root->left->left  = newNode(1);
-    root->left->right = newNode(3);
+    root->left->right = newNode(9);
     
     if(checkBST(root))
         printf("Is BST");
