@@ -9,6 +9,7 @@
 #include <iostream>
 #include <queue>
 #include <list>
+#include <cstdio>
 using namespace std;
 
 class Graph
@@ -31,7 +32,8 @@ public:
     
     void topologicalSort()
     {
-        int arr[]= {0,0,0,0,0,0};
+        int arr[v];
+        memset(arr, 0, sizeof(arr));
         
         
         for (int i=0; i<v; i++)
@@ -64,8 +66,13 @@ public:
                     q.push(*it);
                 }
             }
+            
         }
+        
+        
+        
     }
+    
 };
 
 int main()
