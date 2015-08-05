@@ -64,13 +64,8 @@ public:
                     q.push(*it);
                 }
             }
-            
         }
-        
-        
-        
     }
-    
 };
 
 int main()
