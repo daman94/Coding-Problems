@@ -1,44 +1,51 @@
 //
-//  main.c
-//  Random C program
+//  main.cpp
+//  Random C++ program
 //
-//  Created by Daman Saroa on 08/06/14.
-//  Copyright (c) 2014 Daman Saroa. All rights reserved.
+//  Created by Daman Saroa on 16/08/15.
+//  Copyright (c) 2015 Daman Saroa. All rights reserved.
 //
+
 #include <iostream>
+#include <algorithm>
 #include <string>
-#include <cmath>
 using namespace std;
 
-void RabinKarp(string s, string p)
+void RabinKarpPatternMatching(string str, string p)
 {
-    int h = p[0] - '0';
+    int strIndex=0;
     
-    for (int i=1; i<p.length(); i++) {
-        h = h*10+(p[i] - '0');
+    int np = (int)p.length();
+    int ns = (int)str.length();
+    
+    int h=0; // hash func for pattern
+    for (int i=0; i<np; i++)
+    {
+        h = h*10 + (p[i]-'0');
     }
     
-    int k = 2*(s[0]-'0');
-    for (int i=1; i<s.length(); i++) {
-        k = k-((s[i-1]-'0') * pow(10, p.length()-1));
-        cout<<k<<endl;
+    
+    for (int i=0; i<=ns-np; i++)
+    {
+        int k=0;   //hash func for string
         
-        for (int j=1; j<p.length(); j++) {
-            k = k*10+(s[j]-'0');
+        for (int j=i; j<i+np; j++)
+        {
+            k = k*10 + (str[j]-'0');
         }
         
-        
-        
-        if (h==k) {
-            int m=0;
-            while (p[m]!='\0' && s[i] == p[m]) {
-                i++;
-                m++;
+        if (k==h)
+        {
+            int pIndex=0, sIndex=i;
+            while (p[pIndex] != '\0' && p[pIndex] == str[sIndex])
+            {
+                pIndex++;
+                sIndex++;
             }
             
-            if (m == p.length()) {
-                cout << "pattern found";
-                break;
+            if (p[pIndex] == '\0')
+            {
+                cout << "Pattern found at index: " << i << endl;
             }
         }
     }
@@ -47,11 +54,10 @@ void RabinKarp(string s, string p)
 
 int main()
 {
-    string p = "89";
-    string s = "780903123523896";
+    string p = "87";
+    string str = "188728787187";
     
-    
-    RabinKarp(s, p);
+    RabinKarpPatternMatching(str, p);
     
     return 0;
 }

@@ -1,73 +1,78 @@
 //
-//  main.c
-//  Random C program
+//  main.cpp
+//  Random C++ program
 //
-//  Created by Daman Saroa on 08/06/14.
-//  Copyright (c) 2014 Daman Saroa. All rights reserved.
+//  Created by Daman Saroa on 16/08/15.
+//  Copyright (c) 2015 Daman Saroa. All rights reserved.
 //
+
 #include <iostream>
-#include <cmath>
 using namespace std;
 
-bool isSafe(int mat[10][10], int i, int j, int num)
+
+
+bool NoConflicts(int sudoku[9][9], int row, int col, int num)
 {
-    for (int k=1; k<10; k++) {
-        if (mat[i][k] == num || mat[k][j] == num) {
-            return false;
+    //check row
+    for (int i=0; i<9; i++) {
+        if(sudoku[row][i] == num) return false;
+    }
+    
+    //check col
+    for(int i=0;i<9;i++)
+        if(sudoku[i][col] == num) return false;
+    
+    //check subgrid
+    row = row/3*3;
+    col = col/3*3;
+    
+    for (int i=row; i<row+3; i++) {
+        for (int j=col; j<col+3; j++) {
+            if(sudoku[i][j] == num) return false;
         }
     }
     
-    int p = (i/3)*3, q = (j/3)*3;
-    
-    for (int k=p; k<p+3; k++) {
-        for (int l = q; l<q+3; l++) {
-            if (mat[k][l] == num) {
-                return false;
+    return  true;
+}
+
+bool findUnassignedLocation(int sudoku[9][9], int &row, int &col)
+{
+    for(row=0;row<9;row++)
+    {
+        for (col=0; col<9; col++) {
+            if (sudoku[row][col] == 0) {
+                return true;
             }
         }
     }
-    
-    return true;
+    return false;
 }
 
-
-
-
-bool sudokuSolver(int mat[10][10], bool marked[10][10] ,int i, int j)
+bool solve(int sudoku[9][9])
 {
-    //cout << " i =  "<<i<<"j= "<<j<<endl;
+    int row, col;
     
-    if (i==9) {
-        
-        return true;
-    }
-    if (j==9) {
-        return sudokuSolver(mat, marked, i+1,0);
-    }
+    if(!findUnassignedLocation(sudoku, row, col)) return true;
     
-    if (marked[i][j] == false) {
-        for (int k=1; k<10; k++)
+    for (int num=1; num<=9; num++)
+    {
+        if (NoConflicts(sudoku, row, col, num))
         {
-            if(isSafe(mat, i, j, k))
-            {
-                mat[i][j] = k;
-                if( sudokuSolver(mat, marked,i,j+1) )
-                    return true;
-                
-                mat[i][j] = 0;
-            }
+            sudoku[row][col] = num;
+            bool ok = solve(sudoku);
+            if (ok) return true;
+            else sudoku[row][col] = 0;
         }
-        
-        return false;
     }
-    else
-        return sudokuSolver(mat, marked, i, j+1);
+    
+    return false;
 }
+
+
 
 int main()
 {
-    
-    int mat[10][10] = {
+    int mat[9][9] = {
         {8,0,0,7,5,0,0,4,0},
         {0,0,0,1,0,0,0,0,0},
         {5,1,0,4,0,6,0,0,7},
@@ -78,33 +83,23 @@ int main()
         {0,0,0,0,0,3,0,0,0},
         {0,0,0,0,6,1,0,0,5}};
     
-    bool marked[10][10];
     
-    for (int i=0; i<10; i++)
+    if (solve(mat))
     {
-        for (int j=0; j<10; j++) {
-            if (mat[i][j] != 0) {
-                marked[i][j] = true;
+        for (int i=0; i<9; i++) {
+            for (int j=0; j<9; j++) {
+                cout << mat[i][j] << " ";
             }
-            else
-                marked[i][j] = false;
+            
+            cout << endl;
         }
     }
-    
-    sudokuSolver(mat,marked,0,0) ;
-    //print
-    
-    for (int i=0; i<9; i++) {
-        for (int j=0; j<9; j++) {
-            cout << mat[i][j] << " ";
-        }
-        cout<<endl;
-    }
-    
-    
     
     return 0;
 }
+
+
+
 
 
 
