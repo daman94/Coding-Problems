@@ -7,114 +7,74 @@
 //
 
 #include <iostream>
+#define n 8;
 using namespace std;
 
-void printMatrix(int arr[8][8])
+bool isSafe(int arr[8][8], int row, int col)
 {
-    for (int i=0; i<8; i++) {
-        for (int j=0; j<8; j++) {
-            cout << arr[i][j] << " ";
-        }
-        cout << endl;
-    }
-}
-
-bool isSafe(int arr[8][8], int i, int j)
-{
-    int m,n;
+    //row clear?
     
-    //row and col
-    for (m=0; m<8; m++) {
-        if (arr[i][m] != -1 || arr[m][j] != -1) {
-            return false;
-        }
-    }
-    
-    //upper diagonal
-    m=i, n=j;
-    while (m!=0) {
-        if (arr[m--][n--]!= -1) {
-            return false;
-        }
+    for (int i=0; i<8; i++)
+    {
+        if (arr[row][i] == 1) return false;
     }
     
     //lower diagonal
-    m=i, n=j;
-    while (n!=7) {
-        if (arr[m++][n++]!= -1) {
-            return false;
-        }
+    
+    int i=row, j=col;
+    
+    while (i<8 && j<8) {
+        if (arr[i][j] == 1) return false;
+        i++;
+        j++;
     }
     
+    //upper diagonal
+    i=row, j=col;
+    
+    while (i>0 && j>0) {
+        if (arr[i][j] == 1) return false;
+        i--;
+        j--;
+    }
     return true;
 }
 
-void placeQueen(int arr[8][8], int i, int j)
+bool solve(int arr[8][8], int col)
 {
-    if (i==7 && j==7) {
-        printMatrix(arr);
-        return;
-    }
-    else if(j>7)
-    {
-        
-    }
-    else
-    {
-        if( isSafe(arr, i,j) )
-        {
-            arr[i][j] = 0;
-            placeQueen(arr, i+1, 0);
+    if (col>=8) return true;
+    
+    for (int rowToTry = 0; rowToTry <= 8; rowToTry++) {
+        if (isSafe(arr, rowToTry, col)) {
+            arr[rowToTry][col] = 1;
+            bool ok = solve(arr, col+1);
+            if (ok) return true;
+            else arr[rowToTry][col] = 0;
         }
-        else
-            placeQueen(arr, i, j+1);
     }
+    
+    return false;
 }
 
 
 int main()
 {
-    int arr[8][8];
-    for (int i=0; i<8; i++) {
-        for (int j=0; j<8; j++) {
-            arr[i][j] = -1;
+    
+    int arr[8][8] = {0};
+    
+    if (solve(arr, 0))
+    {
+        for (int i=0; i<8; i++) {
+            for (int j=0; j<8; j++) {
+                cout << arr[i][j] << " ";
+            }
+            
+            cout << endl;
         }
     }
     
-    placeQueen(arr, 0, 0);
-    
-    
-    
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
